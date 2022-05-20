@@ -1,0 +1,58 @@
+<app-alertglobal class="animate__animated animate__fadeIn" *ngIf="activeAlert"></app-alertglobal>
+
+<div class="contenido animate__animated animate__fadeIn">
+  <app-loader *ngIf="activeLoad"></app-loader>
+
+  <div class="header">
+    <app-header-desk></app-header-desk>
+  </div>
+
+  <div class="cuerpo">
+    <div class="formulario">
+      <h3 class="title rmb-13 omnesbold">Olvido de contraseña</h3>
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <p class="subtitle rmb-13 omnesregular">
+          No te preocupes todos olvidamos nuestras contraseñas
+        </p>
+        <form [formGroup]="confMailPass">
+          <span class="rtext-16 rtext-18"><strong class="semibold rtext-azul">Correo</strong> </span>
+          <div>
+            <input
+              type="email"
+              class="input-inline rmt-7 rmb-22 omnesregular"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="nombre@mail.com"
+              formControlName="mail"
+              autocomplete="off"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="r-alert-errors rmb-8 px-4" *ngIf="msjError">
+        <img
+          src="../../../assets/img/incorrecto.svg"
+          width="16"
+          height="16"
+          alt="Icono"
+        />
+        <small class="mx-2 rtext-16 rtext-black animate__animated animate__fadeIn">
+          Correo electrónico Incorrecto.</small
+        >
+      </div>
+      <button
+        class="btn-azul-disabled rmt-34 text-white rtext-18 continuar semibold"
+        [ngClass]="confMailPass.valid ? 'btn-azul-active' : 'btn-azul-disabled'"
+        type="submit"
+        (click)="onSubmit()"
+        [disabled]="!confMailPass.valid"
+      >
+        Continuar
+      </button>
+    </div>
+  </div>
+
+  <div class="">
+    <app-footer [color]="color"></app-footer>
+  </div>
+</div>

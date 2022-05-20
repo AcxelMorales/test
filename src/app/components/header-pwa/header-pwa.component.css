@@ -1,0 +1,22 @@
+.center{
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;;
+}
+
+.logo{
+  margin: 0 auto;
+}
+
+.exit{
+  padding: 0 72px 0 0;
+  align-self: center;
+}
+
+@media (max-width:428px) {
+
+  .exit{
+    padding: 0 28px 0 0;
+  }
+
+  }

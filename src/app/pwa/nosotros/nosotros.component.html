@@ -1,0 +1,13 @@
+<div class="nosotros">
+    <h5 class="rtext-25 rtext-black rmt-37 rmb-21 omnesbold texto">Selecciona la opción por la cual te enteraste de nosotros</h5>
+    <div *ngFor="let item of nosotros; let i = index">
+        <div class="opcion rmb-16">
+            <img src="../../../assets/img/radio.svg" alt="radio" *ngIf="numeroSelect == i">
+            <input type="radio" value="1" name="radio" (click)="selectOption(item.id,i)" *ngIf="numeroSelect != i">
+            <span class="rtext-18 rtext-black omnesregular">{{item.nombre}}</span>
+        </div>
+    </div>
+    <button type="submit" [disabled]="!activedBotton" (click)="enviarInformacion()" class="btn-nosotros-active rtext-16 rmb-48 rmt-16 omnesmedium">
+        Enviar información
+    </button>
+</div>

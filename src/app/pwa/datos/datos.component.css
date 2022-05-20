@@ -1,0 +1,94 @@
+.icon{
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+  width: 18px;
+}
+select option{
+  background-color: #FFFFFF 0% 0% no-repeat padding-box;
+}
+
+.formulario{
+  max-width: 425px;
+  min-width: 200px;
+
+}
+
+.div-icons{
+  width: 427px;
+}
+.NIT{
+  width: 203px;
+}
+.input-inline::placeholder{
+  color: #262626;
+  opacity: 0.5;
+}
+
+
+/** SELECT */ 
+.select-container{
+  display: flex;
+  align-items: center;
+  width: 425px;
+  position: relative;
+}
+.select-text{
+  color: #262626;
+  opacity: 0.5;
+}
+      
+.options{
+    position: absolute;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #5A5A5A24;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+    width: 425px;
+    z-index: 100;
+    right: 0;
+    top: 54px;
+}
+.option {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+.option:hover {
+    background-color: whitesmoke;
+}
+@media (max-width:428px) {
+  .formulario{
+    width: 100%;
+  }
+
+  .options{
+    width: 100%;
+  }
+
+.formulario{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.btn-azul-disabled {
+    width: 100%;
+}
+.btn-azul-active {
+    width: 100%;
+}
+.input-inline {
+  width: 100%;
+}
+.div-icons{
+  width: 100%;
+}
+.documento_digito{
+  display: flex;
+  flex-direction: column;
+}
+.documento_digito, .NIT{
+  width: 100%;
+}
+
+
+}

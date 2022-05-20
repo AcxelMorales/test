@@ -1,0 +1,30 @@
+<div class="contenido animate__animated animate__fadeIn">
+  <div class="header">
+    <app-header-desk></app-header-desk>
+  </div>
+
+  <div class="cuerpo">
+    <div class="formulario">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <img
+          src="../../../assets/img/Trazado 455.svg"
+          alt=""
+          class="mrgn-icon"
+        />
+        <h3 class="title semibold">¡Creaste una nueva contraseña!</h3>
+      </div>
+
+      <button
+        class="btn-azul-active rmt-35 text-white rtext-18 continuar semibold"
+        type="submit"
+        (click)="onSubmit()"
+      >
+        Iniciar sesión
+      </button>
+    </div>
+  </div>
+
+  <div class="">
+    <app-footer [color]="color"></app-footer>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+.code-input{
+    --item-width: 56px;
+    --item-height: 56px;
+    --item-background: #FFFFFF;
+    --box-shadow: 0px 3px 6px #5A5A5A24;
+    --item-border: 1px solid #DBDBDB;
+    --item-border-radius: 4px;
+    --color:#0F113E;
+    font-size: 20px;
+}
+.contenido{
+    display: grid;
+    grid-template-rows: 88px auto 32px;
+    position: fixed;
+    height: 100%;
+    width: 100%
+}
+.codigo{
+    width: 390px;
+}
+
+.cuerpo{
+    background: #F2F2F2 0% 0% no-repeat padding-box;
+    padding: 0 45rem;
+}
+
+.title{
+    height: 35px;
+    font-family: normal normal bold 24px/32px Omnes SemiCond;
+    letter-spacing: 0px;
+    color:var(--bg-color-black);
+}
+.subtitle{
+    font-family: normal normal normal 18px/25px Omnes SemiCond;
+    color: #262626;
+}
+
+.titleModal{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font: normal normal 600 20px/28px Omnes SemiCond;
+    letter-spacing: 0px;
+    color: #262626;
+}
+
+.subtitleModal{
+    font-size: 18px;
+    font: normal normal 600 18px/25px Omnes SemiCond;
+    letter-spacing: 0px;
+    color: #0F113E;
+}
+.modal-header{
+    border-bottom: none;
+}
+
+.continuar{
+    font-family: normal normal 600 18px/22px Omnes SemiCond;
+}
+
+/* @media (max-width:3260px){
+  .cuerpo{
+   background: #F2F2F2 0% 0% no-repeat padding-box;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+} */
+
+@media (max-width:1450px){
+    .cuerpo{
+        padding: 0 30rem;
+    }
+}
+@media (max-width:1026px){
+    .cuerpo{
+        padding: 0 18rem;
+    }
+}
+@media (max-width:769px){
+    .cuerpo{
+        padding: 0 10rem;
+    }
+}
+
+/* @media (max-width:820px){
+  .cuerpo{
+    padding: 0;
+      display: flex;
+      justify-content: center;
+  }
+  } */
+
+@media (max-width:428px) {
+    .cuerpo{
+        padding: 0 24px;
+    }
+    .codigo{
+        width: 100%;
+    }
+    .r-alert-success{
+        width: 100%;
+    }
+    .rbtn-red{
+        width: 100%;
+    }
+    .btn-azul-disabled {
+        width: 100%;
+    }
+    .btn-azul-active {
+        width: 100%;
+    }
+}
+

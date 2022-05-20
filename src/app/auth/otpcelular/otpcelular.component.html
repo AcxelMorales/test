@@ -1,0 +1,71 @@
+<div class="contenido">
+    <div class="header">
+        <app-header-desk></app-header-desk>
+    </div>
+    <div class="cuerpo" style="padding-top: 90px;">
+        <div>
+            <div>
+                <h3 class="title rtext-24">Valida tu celular</h3>
+                <p class="subtitle rtext-18 mb-1">
+                    Ingresa el código de 6 dígitos que enviamos al
+                </p>
+                <strong>celular*******67</strong>
+                <div class="my-5 codigo">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <code-input
+                            class="code-input"
+                            id="otp"
+                            (codeCompleted)="onCodeCompleted($event)"
+                            #input
+                            [isCodeHidden]="false"
+                            [isNonDigitsCode]="false"
+                            [codeLength]="6"
+                        >
+                        </code-input>
+                    </div>
+                </div>
+                <p class="subtitle rtext-16">El código vence en <strong>{{seconds}} segundos</strong></p>
+                <p class="subtitle rtext-16 mb-1">¿No llegó el código? <a class="underline" (click)="renviarOtp()">Enviar de nuevo</a></p>
+                <div class="mb-3">
+                    <a class="underline rtext-16" style="font-size: 16px;margin-bottom: 32px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Confirma o cambia el número de celular aquí
+                    </a>
+                </div>
+                <!-- <div class="rbtn-red mt-2 px-4">
+                    <img src="../../../assets/img/incorrecto.svg" width="14" height="14" alt="Icono">
+                    <strong class="mx-2 rtext-14 rtext-azul">El código no coicide, intenta de nuevo</strong>
+                </div> -->
+                <div class="r-alert-success mt-5 mb-3 px-4" *ngIf="msjSuccess">
+                    <img src="../../../assets/img/palomita.png" width="16" height="16" alt="Icono">
+                    <small class="mx-2 rtext-16">Código enviado</small>
+                </div>
+                <button class="btn-azul-disabled mt-3 text-white rtext-18 continuar">Continuar</button>
+            </div>
+        </div>
+    </div>
+    <div class="fotter">
+        <app-footer [color]="color"></app-footer>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 426px; height: 451px; margin-top: 137px;" >
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="rflex-column rjustify-content-center p-4">
+                <div>
+                    <label class="titleModal">Confirma o cambia tu número de celular</label>
+                    <div class="rflex-column">
+                        <label class="subtitleModal mb-1">Celular</label>
+                        <input type="email" class="rbtn-inline-grey rtext-azul mb-4" placeholder="3112826508">
+                    </div>
+                    <input type="submit" class="rbtn-azul-strong rtext-18" value="Continuar" data-bs-dismiss="modal" aria-label="Close"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

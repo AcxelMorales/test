@@ -1,0 +1,448 @@
+.content {
+  background: linear-gradient(120deg, #004160, #00405F, #002942) 0% 0% no-repeat padding-box;
+  opacity: 1;
+  display: grid;
+  grid-template-rows: auto 32px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.content-registro::-webkit-scrollbar{
+  display: none;
+}
+
+.content-registro {
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  min-width: 270px;
+}
+
+.msj {
+  font: normal normal normal 14px/24px Omnes;
+  color: #262626;
+  font-size: 14px;
+}
+
+.logo {
+  position: relative;
+  top: 16px;
+  width: 179px;
+  height: 56px;
+  opacity: 1;
+}
+
+.logo_click {
+  display: none;
+}
+
+.trazado {
+  position: absolute;
+  top: 79px;
+  left: -285.558899px;
+  width: 720px;
+  height: 360px;
+  opacity: 1;
+}
+
+.img-woman {
+  position: absolute;
+  left: 0;
+  width: 588px;
+  height: 433px;
+  opacity: 1;
+}
+
+.trazado_mobile{
+  top: 325px;
+  width: 653px;
+}
+
+.img-woman_mobile{
+  width: 720px;
+  height: auto
+}
+
+.form {
+  margin-top: 30px;
+  margin-left: 48px;
+  width: 423px;
+  height: auto;
+  background: transparent linear-gradient(180deg, #007eb299 0%, #00405f00 100%)
+    0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  opacity: 1;
+  padding: 32px;
+}
+
+.form div {
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.text-title {
+  margin-top: 60px;
+  font: normal normal bold 40px/48px OmnesBold;
+  width: 589px;
+  font-weight: bold;
+  color: var(--text-color-white);
+}
+
+.text-subtitle {
+  margin-top: 16px;
+  width: 540px;
+  color: var(--text-color-white);
+  font: normal normal medium 22px/32px OmnesRegular;
+}
+
+.terminos {
+  border: 1px solid #007eb2;
+  height: 155px;
+  padding: 16px;
+}
+.terminos p {
+  color: var(--text-color-white);
+  font-size: 12px;
+}
+
+.eyes {
+  position: absolute;
+  bottom: 18px;
+  right: 20px;
+  width: 18;
+  height: 14px;
+  z-index: 99;
+}
+
+.eyesb {
+  position: absolute;
+  bottom: 17px;
+  right: 19px;
+  width: 18;
+  height: 15.8px;
+  z-index: 99;
+}
+
+.indicador {
+  background: transparent url("../../../assets/img/PalomitaValidacionBlanca.svg") 0% 0%;
+  width: 14px;
+  height: 14px;
+  margin-right: 3px;
+  position: relative;
+  top: 4px;
+}
+
+.indicador-selected {
+  background: transparent url("../../../assets/img/PalomitaVerdeClaro.svg") 0% 0%;
+}
+
+.gris {
+  color: var(--text-color-white);
+  font-family: Omnes;
+}
+.verde {
+  color: var(--text-color-green);
+  opacity: 1;
+  font-family: Omnes;
+}
+
+.logo {
+  display: block;
+}
+
+.logo_click {
+  display: none;
+}
+
+.terminos {
+  margin-top: 10px;
+}
+
+.rules {
+  flex-wrap: wrap !important;
+}
+
+.d-flex {
+  width: 170px !important;
+}
+
+.d-flex:last-of-type {
+  width: auto !important;
+}
+
+.helper-content {
+  height: 1136px !important;
+}
+
+.btn-ingresar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-ingresar span {
+  display: inline-block;
+  margin-left: 9px;
+  text-decoration: none;
+}
+
+.content_imgs{
+  display: none;
+  width: 503px;
+  position:relative;
+  height: 375px;
+}
+
+@media (max-width: 1600px) { }
+
+@media (max-width: 1599px) { }
+
+@media (max-width: 1440px) {
+  .rflex-wrap {
+    flex-wrap: initial;
+  }
+
+  .content {
+    height: 100%;
+  }
+
+  .logo {
+    display: block;
+  }
+
+  .logo_click {
+    display: none;
+  }
+
+  .content-registro {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 1366px) {
+  .content-registro{
+    padding:  0 30px;
+    max-width: 100% !important;
+  }
+
+  .content {
+    height: 100%;
+  }
+}
+
+@media (max-width: 1090px) {
+  .img-woman {
+    opacity: 1;
+  }
+
+  .logo {
+    display: block;
+  }
+
+  .logo_click {
+    display: none;
+  }
+
+  .content-registro {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width:990px){
+  .content-wrap-main {
+    flex-direction: column;
+  }
+
+  .trazado, .img-woman {
+    display: none;
+  }
+
+  .content_imgs{
+    display: block;
+  }
+
+  .img-woman_mobile{
+    position: absolute;
+    top: -25px;
+    width: 545px;
+  }
+
+  .trazado_mobile{
+    position: absolute;
+    left: -290px;
+    top: 15px;
+  }
+
+  .content-registro {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content-registro {
+    margin: 0px !important;
+  }
+
+  .content-registro {
+    padding:0 40px;
+  }
+
+  .content-wrap-main {
+    flex-direction: column;
+  }
+
+  .trazado, .img-woman {
+    display: none;
+  }
+
+  .content_imgs{
+    display: block;
+  }
+
+  .img-woman_mobile{
+    position: absolute;
+    top: -25px;
+    width: 545px;
+  }
+
+  .trazado_mobile{
+    position: absolute;
+    left: -290px;
+    top: 15px;
+  }
+
+  .text-title, .text-subtitle {
+    width: 423px;
+  }
+
+  .trazado, .img-woman {
+    top: 1050px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .logo_click {
+    display: block;
+  }
+
+  .content-registro {
+    max-width: 100% !important;
+  }
+
+  .form {
+    margin-left: 0px;
+  }
+
+  .btn-ingresar {
+    margin-top: 0px !important;
+  }
+
+  .content_head {
+    margin-top: 45px;
+  }
+}
+
+@media (max-width:600px){
+  .trazado, .img-woman {
+    display: none;
+  }
+
+  .img-woman_mobile{
+    width: 100%;
+    position: absolute;
+  }
+}
+
+@media (max-width: 525px) {
+  .content{
+    height: 100% !important;
+  }
+
+  .form {
+    margin-left: 0px;
+  }
+
+  .content_imgs {
+    margin-bottom: 30px;
+  }
+
+  .text-title, .text-subtitle {
+    width: auto;
+    margin-top: 28px;
+  }
+
+  .trazado, .img-woman {
+    display: none;
+  }
+
+  .content_imgs{
+    display: block;
+    width: 100%;
+  }
+
+  .img-woman_mobile{
+    width: 100%;
+    position: absolute;
+    top: -35px;
+  }
+
+  .trazado_mobile{
+    width: 100%;
+    position: absolute;
+    left: -141px;
+    top: 15px;
+  }
+
+  .content-registro{
+    padding: 0 24px;
+  }
+
+  .form {
+    width: 100%;
+    padding: 37px 16px 37px 16px !important;
+  }
+
+  .d-flex {
+    font-size: 14px;
+    width: 155px !important;
+  }
+
+  .rmt-21{
+    margin-top: 21px;
+  }
+
+  .logo_click {
+    margin-top: 21px;
+  }
+
+  .content_head {
+    margin-top: 24px;
+  }
+
+  .logo_click {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width:450px){
+  .content_imgs{
+    height: 175px;
+  }
+}
+
+@media (max-width:320px){
+  .img-woman_mobile{
+    width: 320px;
+  }
+
+  .trazado{
+    width: 400px;
+  }
+}

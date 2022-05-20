@@ -1,0 +1,212 @@
+<app-alertglobal class="animate__animated animate__fadeIn" *ngIf="alert"></app-alertglobal>
+
+<div class="contenido animate__animated animate__fadeIn">
+  <app-loader *ngIf="load"></app-loader>
+
+  <div class="header">
+    <app-header-desk></app-header-desk>
+  </div>
+
+  <div class="cuerpo">
+    <div class="formulario">
+      <h3 class="title rmb-25 omnesbold">Crear nueva contraseña</h3>
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <form [formGroup]="newPssw">
+          <span class="rtext-18 rtext-azul"><strong class="semibold">Nueva contraseña</strong> </span>
+          <div class="rp-relative rmb-19 div-eyes-pass">
+            <input
+              [type]="password"
+              class="input-inline"
+              id="exampleInputPassword1"
+              name="pass"
+              placeholder="W3tcya5p."
+              style="margin-top: 7px"
+              (ngModelChange)="showValid($event)"
+              formControlName="pass"
+              autocomplete="off"
+
+            />
+            <img
+              src="../../../assets/img/Trazado 447.svg"
+              alt=""
+              aria-hidden="true"
+              *ngIf="!show"
+              (click)="showPass()"
+              class="eyes"
+            />
+            <img
+              src="../../../assets/img/ojomuestra.svg"
+              alt=""
+              aria-hidden="true"
+              *ngIf="show"
+              (click)="showPass()"
+              class="eyes"
+            />
+          </div>
+          <div class="validaciones rmb-17 animate__animated animate__fadeIn" style="width: 650px" *ngIf="showV">
+            <div class="indicador-box">
+              <div
+                class="indicador"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('minlength')
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris rtext-14 omnesmedium"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('minlength')
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 8 caracteres</span
+              >
+            </div>
+
+            <div class="indicador-box">
+              <div
+                class="indicador"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('hasCapitalCase')
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris rtext-14 omnesmedium"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('hasCapitalCase')
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 1 mayúscula
+              </span>
+            </div>
+
+            <div class="indicador-box">
+              <div
+                class="indicador"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('hasSmallCase')
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris rtext-14 omnesmedium"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('hasSmallCase')
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 1 minúscula</span
+              >
+            </div>
+
+            <div class="indicador-box">
+              <div
+                class="indicador"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('hasNumber')
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris rtext-14 omnesmedium"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('hasNumber')
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 1 número</span
+              >
+            </div>
+
+            <div class="indicador-box">
+              <div
+                class="indicador"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('hasSpecialCharacters')
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris rtext-14 omnesmedium"
+                [ngClass]="
+                  newPssw.controls['pass'].hasError('required') ||
+                  newPssw.controls['pass'].hasError('hasSpecialCharacters')
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 1 caracter especial (+*%$)</span
+              >
+            </div>
+          </div>
+
+          <span class="rtext-18 semibold rtext-azul"><strong>Confirmar contraseña</strong> </span>
+          <div class="rp-relative div-eyes-pass">
+            <input
+              [type]="passwordC"
+              class="input-inline"
+              id="exampleInputPassword2"
+              name="confirmPass"
+              placeholder="W3tcya5p."
+              style="margin-top: 7px"
+              formControlName="confirmPass"
+              autocomplete="off"
+            />
+            <img
+              src="../../../assets/img/Trazado 447.svg"
+              alt=""
+              aria-hidden="true"
+              *ngIf="!showC"
+              (click)="showPassConf()"
+              class="eyes"
+            />
+            <img
+              src="../../../assets/img/ojomuestra.svg"
+              alt=""
+              aria-hidden="true"
+              *ngIf="showC"
+              (click)="showPassConf()"
+              class="eyes"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="r-alert-errors rmb-8 px-4" *ngIf="msjError">
+        <img
+          src="../../../assets/img/incorrecto.svg"
+          width="16"
+          height="16"
+          alt="Icono"
+        />
+        <small class="mx-2 rtext-16 rtext-black animate__animated animate__fadeIn">{{ errores[0].msg }}</small>
+      </div>
+      <button
+        class="btn-azul-disabled rmt-33 text-white rtext-18 continuar semibold"
+        [ngClass]="newPssw.valid ? 'btn-azul-active' : 'btn-azul-disabled'"
+        type="submit"
+        (click)="confPssw()"
+        [disabled]="!newPssw.valid"
+      >
+        Crear
+      </button>
+    </div>
+  </div>
+  <div class="">
+    <app-footer [color]="color"></app-footer>
+  </div>
+</div>

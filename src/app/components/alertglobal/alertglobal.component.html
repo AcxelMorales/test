@@ -1,0 +1,13 @@
+<div
+*ngIf="closed"
+  class="alert_general rflex-row ralign-items-center r-alert-warning"
+>
+  <div class="rflex-row rp-0 texto">
+    <img src="../../../assets/img/warning.svg" alt="Imagen" class="img_warning" />
+    <p class="msj m-0 rtext-14">
+      Tenemos inconvenientes con nuestra plataforma, intenta de nuevo en unos
+      minutos.
+    </p>
+  </div>
+  <img (click)="onClose()" src="../../../assets/img/close-inline.svg" alt="Imagen" />
+</div>

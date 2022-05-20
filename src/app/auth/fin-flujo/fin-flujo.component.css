@@ -1,0 +1,30 @@
+.linkr {
+  display: block;
+  min-height: 1.5rem;
+  /* padding-left: 1.5em; */
+  margin-bottom: 0.125rem;
+}
+
+/* @media (max-width:3260px){
+  .cuerpo{
+   background: #F2F2F2 0% 0% no-repeat padding-box;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width:820px){
+  .cuerpo{
+    padding: 0;
+      display: flex;
+  }
+  } */
+  @media (max-width: 360px){
+    .title{
+      width: 332px;
+    }
+    .cuerpo{
+      margin-left: 16px;
+    }
+  }

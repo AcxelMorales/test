@@ -1,0 +1,19 @@
+.revisando{
+    max-width: 428px;
+    min-width: 200px
+}
+.revisando img{
+    width: 340px;
+    height: 225px;
+}
+
+@media (max-width:426px){
+    .revisando{
+        padding: 0 25px;
+    }
+    .revisando img{
+        width: 100%;
+        margin-left: 0;
+        height: auto;
+    }
+}

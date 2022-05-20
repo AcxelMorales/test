@@ -1,0 +1,30 @@
+.contenedor{
+  height: 100vh;
+}
+.header{
+  height: 72px;
+  background-color: #00405F;
+}
+.cont::-webkit-scrollbar{
+  display: none;
+}
+.cont{
+  height: 87.1%;
+  background-color: #F2F2F2;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+.footer{
+  height: 32px;
+}
+
+
+@media (max-width:428px) {
+
+.cont{
+  width: 100%;
+}
+
+}

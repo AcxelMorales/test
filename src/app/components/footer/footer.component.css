@@ -1,0 +1,22 @@
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color-white);
+    font-size: 12px;
+    height: 32px;
+    width: 100%;
+    background: #00405F 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+.footer p{
+    margin: 0;
+    text-align: center;
+}
+
+@media (max-width:428px) {
+    /* .footer{  
+        position: absolute;
+    } */
+}

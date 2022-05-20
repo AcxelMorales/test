@@ -1,0 +1,128 @@
+<app-alertglobal class="animate__animated animate__fadeIn" *ngIf="activeAlert"></app-alertglobal>
+
+<div class="contenido animate__animated animate__fadeIn">
+  <app-loader *ngIf="activeLoader"></app-loader>
+
+  <div class="header">
+    <app-header-desk></app-header-desk>
+  </div>
+
+  <div class="cuerpo">
+    <div class="formulario">
+      <h3 class="title rtext-24 rtext-bold omnesbold">Valida tu correo</h3>
+      <div class="subtitle rtext-18 omnesregular">
+        Ingresa el código de 6 dígitos que enviamos al correo
+        <strong class="omnesbold">{{ email | mask }}</strong>
+      </div>
+      <div class="codigo">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <code-input
+            class="code-input"
+            id="otp"
+            (codeCompleted)="onCodeCompleted($event)"
+            #input
+            [isCodeHidden]="false"
+            [isNonDigitsCode]="false"
+            [codeLength]="6"
+          >
+          </code-input>
+        </div>
+      </div>
+      <div class="subtitle rtext-16 rmb-9 omnesregular">
+        El código vence en <span class="omnesbold">{{ seconds }} segundos</span>
+      </div>
+      <p class="subtitle rtext-16 rmb-9 omnesregular llego">
+        ¿No llegó el código?
+        <a class="underline omnesregular" (click)="renviarCodigo()">Enviar de nuevo</a>
+      </p>
+      <div class="mb-3 confirma">
+        <a
+          class="underline rtext-16 omnesregular"
+          style="margin-bottom: 32px"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Confirma o cambia el correo aquí
+        </a>
+      </div>
+      <div class="rbtn-red rmt-39 px-4 animate__animated animate__fadeIn" *ngIf="msjError">
+        <img
+          src="../../../assets/img/incorrecto.svg"
+          width="14"
+          height="14"
+          alt="Icono"
+        />
+        <strong class="mx-2 rtext-14 rtext-azul">{{ error }}</strong>
+      </div>
+      <div class="r-alert-success rmt-39 px-4 animate__animated animate__fadeIn" *ngIf="msjSuccess">
+        <img
+          src="../../../assets/img/palomita.png"
+          width="16"
+          height="16"
+          alt="Icono"
+        />
+        <small class="mx-2 rtext-16 rtext-black">{{ success }}</small>
+      </div>
+      <button
+        class="rmt-31 text-white rtext-18 continuar semibold"
+        [ngClass]="validContinue ? 'btn-azul-active' : 'btn-azul-disabled'"
+        (click)="continuar()"
+        [disabled]="!validContinue"
+      >
+        Continuar
+      </button>
+    </div>
+  </div>
+
+  <div class="">
+    <app-footer [color]="color"></app-footer>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="rflex-column rjustify-content-center p-4">
+        <div>
+          <div class="rflex-row rjustify-content-end">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <p class="titleModal rtext-bold semiomnes">Confirma o cambia tu correo</p>
+          <div class="rflex-column">
+            <label class="subtitleModal rmb-7 semiomnes">Correo</label>
+            <form [formGroup]="cambiarEmailForm">
+              <input
+                type="email"
+                autocomplete="off"
+                class="rbtn-inline-grey rtext-azul rmb-30"
+                formControlName="email"
+                placeholder="cristian.nino@bayport.com"
+              />
+            </form>
+          </div>
+          <input
+            type="submit"
+            class="rbtn-azul-strong rtext-18 omnesregular"
+            [disabled]="!cambiarEmailForm.valid"
+            (click)="cambiarEmail()"
+            value="Continuar"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

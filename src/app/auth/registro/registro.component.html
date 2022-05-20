@@ -1,0 +1,372 @@
+<app-alertglobal
+  class="animate__animated animate__fadeIn"
+  *ngIf="activeAlert"
+></app-alertglobal>
+<app-loader *ngIf="load"></app-loader>
+
+<div class="content" id="content">
+  <div class="content-registro">
+    <div class="rflex-row rjustify-content-between content_head">
+      <img src="../../../assets/img/logo@2x.png" alt="imagen" class="logo" />
+      <img
+        src="../../../assets/img/click.svg"
+        alt="imagen"
+        class="logo_click"
+      />
+      <a [routerLink]="['/inicio-sesion']" style="text-decoration: none">
+        <button
+          type="button"
+          class="rbtn-inline-yellow rmt-1 rtext-16 rtext btn-ingresar rmt-21"
+        >
+          <img src="../../../assets/img/user.svg" alt="Icono" />
+          <span class="semibold">Ingresar</span>
+        </button>
+      </a>
+    </div>
+
+    <div
+      class="rflex-row rjustify-content-between rflex-wrap content-wrap-main"
+    >
+      <div>
+        <h3 class="text-title rtext-40 omnesbold">
+          Vive la experiencia de ser un asesor independiente Bayport
+        </h3>
+        <p class="text-subtitle rtext-22 omnesmedium">
+          Contarás con todo un equipo a tu servicio y herramientas digitales que
+          apoyan tu gestión
+        </p>
+        <div class="rp-relative">
+          <img
+            src="../../../assets/img/Trazado.svg"
+            alt="Imagen"
+            id="trazado"
+            class="trazado"
+          />
+          <img
+            src="../../../assets/img/woman2.png"
+            alt="Imagen"
+            id="img-woman"
+            class="img-woman"
+          />
+        </div>
+      </div>
+      <div class="form">
+        <form [formGroup]="crearCuentaForm">
+          <h4 class="rtext-20 rtext-white rmb-1 omnesbold">Crear cuenta</h4>
+          <div class="rflex-colum">
+            <label for="nombre" class="rtext-16 rtext-white semibold "
+              >Nombre completo</label
+            >
+            <input
+              type="text"
+              class="rbtn-input"
+              formControlName="nombre"
+              (blur)="onCheckError()"
+              placeholder="Como aparece en la cédula"
+              [ngClass]="
+                (crearCuentaForm.controls.nombre.hasError('required') &&
+                  crearCuentaForm.controls.nombre.touched) ||
+                crearCuentaForm.controls.nombre.hasError('pattern')
+                  ? 'rbtn-input-error'
+                  : 'rbtn-input'
+              "
+            />
+            <span
+              *ngIf="
+                crearCuentaForm.controls.nombre.hasError('required') &&
+                crearCuentaForm.controls.nombre.touched
+              "
+              class="r-alert-error animate__animated animate__fadeIn"
+            >
+              Ingresa tu nombre completo
+            </span>
+            <span
+              *ngIf="crearCuentaForm.controls.nombre.hasError('pattern')"
+              class="r-alert-error animate__animated animate__fadeIn"
+            >
+              Ingresa solamente caracteres alfabéticos
+            </span>
+          </div>
+          <div class="rflex-colum">
+            <label for="email" class="rtext-16 rtext-white semibold "
+              >Correo electrónico</label
+            >
+            <input
+              type="email"
+              class="rbtn-input"
+              formControlName="correo"
+              (blur)="onCheckError()"
+              placeholder="nombre@mail.com"
+              [ngClass]="
+                (crearCuentaForm.controls.correo.hasError('required') &&
+                  crearCuentaForm.controls.correo.touched) ||
+                crearCuentaForm.controls.correo.hasError('soloMail') ||
+                correoExistente
+                  ? 'rbtn-input-error'
+                  : 'rbtn-input'
+              "
+            />
+
+            <span
+              *ngIf="
+                crearCuentaForm.controls.correo.hasError('required') &&
+                crearCuentaForm.controls.correo.touched
+              "
+              class="r-alert-error animate__animated animate__fadeIn"
+            >
+              Ingresa tu correo personal
+            </span>
+            <span
+              *ngIf="crearCuentaForm.controls.correo.hasError('soloMail')"
+              class="r-alert-error animate__animated animate__fadeIn"
+            >
+              Escructura de correo incorrecta
+            </span>
+            <span *ngIf="correoExistente" class="r-alert-error animate__animated animate__fadeIn">
+              {{ email }}
+            </span>
+          </div>
+          <div class="rflex-colum">
+            <label for="celular" class="rtext-16 rtext-white semibold"
+              >Celular</label
+            >
+            <input
+              type="text"
+              class="rbtn-input"
+              formControlName="celular"
+              maxlength="10"
+              (ngModelChange)="validarCelular($event)"
+              (blur)="onCheckError()"
+              placeholder="1234567890"
+              [ngClass]="
+                (crearCuentaForm.controls.celular.hasError('required') &&
+                  crearCuentaForm.controls.celular.touched) ||
+                crearCuentaForm.controls.celular.hasError('numbers') ||
+                crearCuentaForm.controls.celular.hasError('onlyNumber') ||
+                numeroDeError && crearCuentaForm.controls.celular.touched ||
+                numeroExistente
+                  ? 'rbtn-input-error'
+                  : 'rbtn-input'
+              "
+            />
+
+            <span
+              *ngIf="
+                crearCuentaForm.controls.celular.hasError('required') &&
+                crearCuentaForm.controls.celular.touched
+              "
+              class="r-alert-error animate__animated animate__fadeIn"
+            >
+              Ingresa tu número de celular
+            </span>
+            <span *ngIf="numeroExistente" class="r-alert-error animate__animated animate__fadeIn">
+              {{ celular }}
+            </span>
+            <span
+              *ngIf="numeroDeError == 1"
+              class="r-alert-error animate__animated animate__fadeIn"
+            >
+              Ingresa solamente caracteres numéricos
+            </span>
+            <span
+              *ngIf="numeroDeError == 2"
+              class="r-alert-error animate__animated animate__fadeIn"
+            >
+              El número debe iniciar con el número 3
+            </span>
+            <span
+              *ngIf="numeroDeError == 3 && crearCuentaForm.controls.celular.touched"
+              class="r-alert-error animate__animated animate__fadeIn"
+            >
+              El número debe ser de 10 caracteres
+            </span>
+          </div>
+          <div class="rflex-colum rp-relative">
+            <label for="celular" class="rtext-16 rtext-white semibold"
+              >Contraseña</label
+            >
+            <img
+              src="../../../assets/img/eyes.svg"
+              *ngIf="show"
+              alt="icono"
+              class="eyes"
+              (click)="showPassword()"
+            />
+            <img
+              src="../../../assets/img/OjoBlanco.svg"
+              *ngIf="!show"
+              alt="icono"
+              class="eyesb"
+              (click)="showPassword()"
+            />
+            <input
+              [type]="show ? 'password' : 'text'"
+              class="rbtn-input"
+              name="pass"
+              formControlName="pass"
+              mixlength="8"
+              placeholder="W3tcya5p"
+              (blur)="onCheckError()"
+              (ngModelChange)="mostrarValidaciones($event)"
+              [ngClass]="
+                crearCuentaForm.controls.pass.hasError('required') &&
+                crearCuentaForm.controls.pass.touched
+                  ? 'rbtn-input-error'
+                  : 'rbtn-input'
+              "
+            />
+          </div>
+          <span
+            *ngIf="
+              crearCuentaForm.controls.pass.hasError('required') &&
+              crearCuentaForm.controls.pass.touched
+            "
+            class="r-alert-error animate__animated animate__fadeIn"
+          >
+            Crea una contraseña
+          </span>
+          <div *ngIf="showValidaciones" class="rflex-row rflex-wrap rules animate__animated animate__fadeIn">
+            <div class="d-flex">
+              <div
+                class="indicador text-white"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError('minlength')
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris mx-1 rtext-14"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError('minlength')
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 8 caracteres</span
+              >
+            </div>
+            <div class="d-flex">
+              <div
+                class="indicador"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError('hasCapitalCase')
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris ml-1 rtext-14"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError('hasCapitalCase')
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 1 mayúscula</span
+              >
+            </div>
+
+            <div class="d-flex">
+              <div
+                class="indicador"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError('hasSmallCase')
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris mx-1 rtext-14"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError('hasSmallCase')
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 1 minúscula</span
+              >
+            </div>
+            <div class="d-flex">
+              <div
+                class="indicador"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError('hasNumber')
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris mx-1 rtext-14"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError('hasNumber')
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 1 número</span
+              >
+            </div>
+
+            <div class="d-flex" style="margin: 0">
+              <div
+                class="indicador"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError(
+                    'hasSpecialCharacters'
+                  )
+                    ? 'indicador'
+                    : 'indicador-selected'
+                "
+              ></div>
+              <span
+                class="gris mx-1 rtext-14"
+                [ngClass]="
+                  crearCuentaForm.controls['pass'].hasError('required') ||
+                  crearCuentaForm.controls['pass'].hasError(
+                    'hasSpecialCharacters'
+                  )
+                    ? 'gris'
+                    : 'verde'
+                "
+                >Mínimo 1 caracter especial (+*%$)
+              </span>
+            </div>
+          </div>
+
+          <div class="rflex-colum terminos">
+            <p class="rtext-12 omnesregular">
+              Al dar clic en crear indicas que has leído, estás de acuerdo y
+              autorizas el uso general de datos descrito en la
+              <small class="rtext-yellow rtext-12"
+                >Política de Tratamiento de datos personales,</small
+              >
+              de Bayport Colombia S.A.
+            </p>
+            <button
+              class=" rtext-18 rtext-weight-600 semibold"
+              [ngClass]="crearCuentaForm.valid ? 'rbtn-yellow' : 'rbtn-yellow-disabled'"
+              [disabled]="!crearCuentaForm.valid"
+              (click)="crearCuenta()"
+            >
+              Crear
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="content_imgs">
+        <img src="../../../assets/img/Trazado.svg" alt="Imagen" class="trazado_mobile"/>
+        <img src="../../../assets/img/woman2.png" alt="Imagen" class="img-woman_mobile"/>
+      </div>
+    </div>
+
+  </div>
+  <div class="mifooter">
+    <app-footer [color]="color"></app-footer>
+  </div>
+</div>

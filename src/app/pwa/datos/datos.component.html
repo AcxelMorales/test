@@ -1,0 +1,137 @@
+<div class="formulario">
+  <h3 class="rtext-24 rtext-black rmt-37 rmb-2 omnesbold">Ingresa tus datos</h3>
+  <p class="rtext-18 rtext-black rmb-12 omnesregular"> Con esta información nos podremos comunicar contigo</p>
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <form [formGroup]="datos">
+      <span class="rtext-18 semibold rtext-black">Tipo de documento </span>
+      <div class="select-container input-inline rmb-19">
+        <div (click)="activeOpcionesDocumento=!activeOpcionesDocumento" class="w-100 rflex-row rjustify-content-between">
+            <span class="select-text omnesregular">{{documento}}</span>
+            <img [src]="activeOpcionesDocumento ? '../../../assets/img/flecha_up.svg':'../../../assets/img/flecha_down.svg'" 
+              alt="Imagen" 
+              class="rmr-16"
+            >
+        </div>
+        <div class="options" *ngIf="activeOpcionesDocumento">
+          <div class="option" (click)="selectedOptionDocumento(1,'Cédula de cuidadania')">Cédula de cuidadania</div>
+          <div class="option" (click)="selectedOptionDocumento(2,'Cédula de extranjeria')">Cédula de extranjeria</div>
+          <div class="option" (click)="selectedOptionDocumento(3,'NIT')">NIT</div>
+        </div>
+      </div>
+      <div class="rp-relative div-icons">
+        <!-- <select class="input-inline rmb-19" formControlName="tipodocumento" (click)="mostrarDocumento()">
+          <option value="" hidden selected>Selecciona la opción</option>
+          <option value="1">Cédula de cuidadania</option>
+          <option value="2">Cédula de extranjeria</option>
+          <option value="3">NIT</option>
+        </select> -->
+        <!-- <img
+          src="../../../assets/img/Trazado 447.svg"
+          alt=""
+          aria-hidden="true"
+          (click)="busqueda()"
+          class="icon"
+        /> -->
+      </div>
+      <div class="rflex-row rjustify-content-between documento_digito" *ngIf="activeDocumento">
+        <div class="rflex-colum">
+          <span class="rtext-16"><strong class="semibold rtext-black">Número de documento</strong> </span>
+          <input
+            type="text"
+            autocomplete="off"
+            class="input-inline rmb-19 NIT omnesregular"
+            aria-describedby="emailHelp"
+            placeholder="nombre@mail.com"
+            formControlName="numerodocumento"
+
+          />
+        </div>
+        <div class="rflex-colum">
+          <span class="rtext-16"><strong class="semibold rtext-black">Dígito de verificación</strong> </span>
+          <input
+            type="text"
+            autocomplete="off"
+            class="input-inline rmb-19 NIT omnesregular"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="nombre@mail.com"
+            formControlName="digitoverificador"
+          />
+        </div>
+
+      </div>
+      <span class="rtext-16"><strong class="semibold rtext-black">Género</strong> </span>
+      <div class="select-container input-inline rmb-19">
+        <div (click)="activeOpcionesGenero=!activeOpcionesGenero" class="w-100 rflex-row rjustify-content-between">
+            <span class="select-text omnesregular">{{genero}}</span>
+            <img [src]="activeOpcionesGenero ? '../../../assets/img/flecha_up.svg':'../../../assets/img/flecha_down.svg'" 
+              alt="Imagen" 
+              class="rmr-16"
+            >
+        </div>
+        <div class="options" *ngIf="activeOpcionesGenero">
+          <div class="option" (click)="selectedOptionGenero(1,'Femenino')">Femenino</div>
+          <div class="option" (click)="selectedOptionGenero(2,'Masculino')">Masculino</div>
+          <div class="option" (click)="selectedOptionGenero(3,'Prefiero no mencionarlo')">Prefiero no mencionarlo</div>
+        </div>
+      </div>
+
+      <!-- <select class="input-inline rmb-19" formControlName="genero">
+        <option value="" hidden selected>Selecciona la opción</option>
+        <option value="1">Femenino</option>
+        <option value="2">Femenino</option>
+        <option value="3">Prefiero no mencionarlo</option>
+      </select> -->
+      <div class="rp-relative div-icons">
+      </div>
+      <span class="rtext-16"><strong class="semibold rtext-black">Departamento</strong> </span>
+      <div class="rp-relative div-icons">
+        <input
+          type="text"
+          class="input-inline rmb-19 omnesregular"
+          id="exampleInputPassword1"
+          placeholder="W3tcya5p."
+          formControlName="departamento"
+          autocomplete="off"
+        />
+        <img
+          src="../../../assets/img/lupa.svg"
+          alt=""
+          aria-hidden="true"
+          (click)="busqueda()"
+          class="icon"
+        />
+      </div>
+      <span class="rtext-16"><strong class="semibold rtext-black">Ciudad</strong> </span>
+      <div class="rp-relative div-icons">
+        <input
+        type="text"
+          class="input-inline rmb-31 omnesregular"
+          id="exampleInputPassword1"
+          placeholder="W3tcya5p."
+          formControlName="ciudad"
+          autocomplete="off"
+        />
+        <img
+          src="../../../assets/img/lupa.svg"
+          alt=""
+          aria-hidden="true"
+          (click)="busqueda()"
+          class="icon"
+        />
+      </div>
+    </form>
+  </div>
+
+
+
+  <button
+    class="btn-azul-disabled mt-3 text-white rtext-18 continuar rmb-72 semibold"
+    [ngClass]="datos.valid ? 'btn-azul-active' : 'btn-azul-disabled'"
+    type="submit"
+    (click)="onSubmit()"
+    [disabled]="!datos.valid"
+  >
+    Aceptar
+  </button>
+</div>

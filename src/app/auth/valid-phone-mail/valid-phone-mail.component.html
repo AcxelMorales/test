@@ -1,0 +1,72 @@
+<app-alertglobal class="animate__animated animate__fadeIn" *ngIf="activeAlert"></app-alertglobal>
+
+<div class="contenido animate__animated animate__fadeIn">
+  <app-loader *ngIf="activeLoad"></app-loader>
+
+  <div class="header">
+    <app-header-desk></app-header-desk>
+  </div>
+
+  <div class="cuerpo">
+    <div class="formulario">
+      <h3 class="title rtext-24 rmb-18 omnesbold">Valida tu correo</h3>
+      <p class="subtitle rtext-18 mb-1 omnesregular">
+        Ingresa el código de 6 dígitos que enviamos al correo
+        <strong class="omnesbold">{{email | mask}}</strong>
+      </p>
+
+      <div class="codigo">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <code-input
+            class="code-input"
+            id="otp"
+            (codeCompleted)="onCodeCompleted($event)"
+            #input
+            [isCodeHidden]="false"
+            [isNonDigitsCode]="false"
+            [codeLength]="6"
+          >
+          </code-input>
+        </div>
+      </div>
+      <p class="subtitle rtext-16 rmb-9 omnesregular">
+        El código vence en <span class="omnesbold">{{ seconds }} segundos</span>
+      </p>
+      <p class="subtitle rtext-16 rmb-22 omnesregular">
+        ¿No llegó el código?
+        <a class="underline" (click)="renviarOtp()">Enviar de nuevo</a>
+      </p>
+      <div class="r-alert-success rmb-8 px-4" *ngIf="msjSuccess">
+        <img
+          src="../../../assets/img/palomita.svg"
+          width="16"
+          height="16"
+          alt="Icono"
+        />
+        <small class="mx-2 rtext-16 rtext-black animate__animated animate__fadeIn">{{ successenv }}</small>
+      </div>
+      <div class="r-alert-errors rmb-8 px-4" *ngIf="msjError">
+        <img
+          src="../../../assets/img/incorrecto.svg"
+          width="16"
+          height="16"
+          alt="Icono"
+        />
+        <small class="mx-2 rtext-16 rtext-black animate__animated animate__fadeIn">{{ errores[0].msg }}</small>
+      </div>
+      <button
+        class="btn-azul-disabled mt-3 text-white rtext-18 continuar semibold"
+        [ngClass]="activeContinua ? 'btn-azul-active' : 'btn-azul-disabled'"
+        [disabled]="!activeContinua"
+        type="submit"
+        (click)="onSubmit()"
+      >
+        Continuar
+      </button>
+    </div>
+  </div>
+
+  <div class="">
+    <app-footer [color]="color"></app-footer>
+  </div>
+</div>

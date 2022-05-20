@@ -1,0 +1,34 @@
+image: node:latest
+include:
+  - project: 'bayport-development/ci-cd/general-templates'
+    file: '.general-angular-pages.yml'
+
+stages:
+  - init
+  - test
+  - build
+  - package
+  - deploy
+
+publish-to-registry:
+  extends: .publish-to-registry
+  stage: build
+  allow_failure: false
+
+get-helm-chart:
+  stage: package
+  extends: .get-helm-chart
+  only:
+    - development
+    - production
+    - test
+
+deploy-helm-kubernetes:
+  stage: deploy
+  extends: .deploy-helm-kubernetes
+  only:
+    - development
+    - production
+    - test
+  dependencies:
+    - get-helm-chart
